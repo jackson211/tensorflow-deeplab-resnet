@@ -1,0 +1,4 @@
+./deeplab_resnet.ckpt
+./deeplab_resnet_init.ckpt
+./dataset/label/*.tif
+./dataset/top/*.tif
