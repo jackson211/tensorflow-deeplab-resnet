@@ -52,7 +52,7 @@ invert_palette = {(255, 255, 255): 0,  # Impervious surfaces (white)
                   (0, 0, 0): 6}        # Unclassified (black)
 
 
-BATCH_SIZE = 10
+BATCH_SIZE = 5
 DATA_DIRECTORY = './dataset/'
 LABEL_DIR = DATA_DIRECTORY + 'label/'
 NEW_LABEL_DIR = DATA_DIRECTORY + 'label_converted/'
