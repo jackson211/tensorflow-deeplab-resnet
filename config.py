@@ -52,24 +52,25 @@ invert_palette = {(255, 255, 255): 0,  # Impervious surfaces (white)
                   (0, 0, 0): 6}        # Unclassified (black)
 
 
-BATCH_SIZE = 4
+BATCH_SIZE = 10
 DATA_DIRECTORY = './dataset/'
 LABEL_DIR = DATA_DIRECTORY + 'label/'
 NEW_LABEL_DIR = DATA_DIRECTORY + 'label_converted/'
 IRRG_DIR = DATA_DIRECTORY + 'top/'
-
 DATA_LIST_PATH = './dataset/train_file.txt'
 IGNORE_LABEL = 255
 INPUT_SIZE = '128,128'
-LEARNING_RATE = 1e-4
+LEARNING_RATE = 2.5e-4
 MOMENTUM = 0.9
 NUM_CLASSES = len(label_values)
-NUM_STEPS = 20000
+NUM_STEPS = 20001
+POWER = 0.9
 RANDOM_SEED = 1234
 RESTORE_FROM = './deeplab_resnet.ckpt'
 SAVE_NUM_IMAGES = 2
 SAVE_PRED_EVERY = 100
 SNAPSHOT_DIR = './snapshots_finetune/'
+WEIGHT_DECAY = 0.0005
 MEAN_PIXEL = (81.29, 81.93, 120.90)
 
 folders = [
