@@ -12,6 +12,7 @@ from datetime import datetime
 import os
 import sys
 import time
+from tqdm import tqdm
 
 import tensorflow as tf
 import numpy as np
@@ -219,7 +220,7 @@ def main():
     threads = tf.train.start_queue_runners(coord=coord, sess=sess)
 
     # Iterate over training steps.
-    for step in range(args.num_steps):
+    for step in tqdm(args.num_steps):
         start_time = time.time()
         feed_dict = { step_ph : step }
 
