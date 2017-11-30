@@ -34,7 +34,7 @@ FLIPS = [False, False]
 
 BGR = True
 label_values = ['imp_surfaces', 'building', 'low_vegetation',
-                'tree', 'car', 'clutter']
+                'tree', 'car', 'clutter', 'unclassified']
 # Color palette
 palette = {0: (255, 255, 255),  # Impervious surfaces (white)
            1: (0, 0, 255),      # Buildings (dark blue)
@@ -50,7 +50,6 @@ invert_palette = {(255, 255, 255): 0,  # Impervious surfaces (white)
                   (255, 255, 0): 4,    # Car (yellow)
                   (255, 0, 0): 5,      # Clutter (red)
                   (0, 0, 0): 6}        # Unclassified (black)
-NUMBER_OF_CLASSES = len(label_values)
 
 
 BATCH_SIZE = 4
@@ -63,14 +62,14 @@ DATA_LIST_PATH = './dataset/train_file.txt'
 IGNORE_LABEL = 255
 INPUT_SIZE = '321,321'
 LEARNING_RATE = 1e-4
-NUM_CLASSES = 21
+NUM_CLASSES = len(label_values)
 NUM_STEPS = 20000
 RANDOM_SEED = 1234
 RESTORE_FROM = './deeplab_resnet.ckpt'
 SAVE_NUM_IMAGES = 2
 SAVE_PRED_EVERY = 100
 SNAPSHOT_DIR = './snapshots_finetune/'
-
+MEAN_PIXEL = (81.29, 81.93, 120.90)
 
 folders = [
     ('labels', NEW_LABEL_DIR, 'top_mosaic_09cm_area{}.tif'),

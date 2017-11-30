@@ -1,29 +1,26 @@
 from PIL import Image
 import numpy as np
 import tensorflow as tf
-
+from config import NUM_CLASSES
 # colour map
-label_colours = [(0,0,0)
-                # 0=background
-                ,(128,0,0),(0,128,0),(128,128,0),(0,0,128),(128,0,128)
-                # 1=aeroplane, 2=bicycle, 3=bird, 4=boat, 5=bottle
-                ,(0,128,128),(128,128,128),(64,0,0),(192,0,0),(64,128,0)
-                # 6=bus, 7=car, 8=cat, 9=chair, 10=cow
-                ,(192,128,0),(64,0,128),(192,0,128),(64,128,128),(192,128,128)
-                # 11=diningtable, 12=dog, 13=horse, 14=motorbike, 15=person
-                ,(0,64,0),(128,64,0),(0,192,0),(128,192,0),(0,64,128)]
-                # 16=potted plant, 17=sheep, 18=sofa, 19=train, 20=tv/monitor
+label_colours = [(255, 255, 255), # Impervious surfaces (white)
+                (0, 0, 255),      # Buildings (dark blue)
+                (0, 255, 255),    # Low vegetation (light blue)
+                (0, 255, 0),      # Tree (green)
+                (255, 255, 0),    # Car (yellow)
+                (255, 0, 0),      # Clutter (red)
+                (0, 0 , 0)]       # Unclassified (black)
 
-def decode_labels(mask, num_images=1, num_classes=21):
+def decode_labels(mask, num_images=1, num_classes=NUM_CLASSES):
     """Decode batch of segmentation masks.
-    
+
     Args:
       mask: result of inference after taking argmax.
       num_images: number of images to decode from the batch.
       num_classes: number of classes to predict (including background).
-    
+
     Returns:
-      A batch with num_images RGB images of the same size as the input. 
+      A batch with num_images RGB images of the same size as the input.
     """
     n, h, w, c = mask.shape
     assert(n >= num_images), 'Batch size %d should be greater or equal than number of images to save %d.' % (n, num_images)
@@ -61,12 +58,12 @@ def prepare_label(input_batch, new_size, num_classes, one_hot=True):
 def inv_preprocess(imgs, num_images, img_mean):
     """Inverse preprocessing of the batch of images.
        Add the mean vector and convert from BGR to RGB.
-       
+
     Args:
       imgs: batch of input images.
       num_images: number of images to apply the inverse transformations on.
       img_mean: vector of mean colour values.
-  
+
     Returns:
       The batch of the size num_images with the same spatial dimensions as the input.
     """
