@@ -19,7 +19,7 @@ import numpy as np
 from deeplab_resnet import DeepLabResNetModel, ImageReader, decode_labels, inv_preprocess, prepare_label
 from config import BATCH_SIZE, DATA_DIRECTORY, DATA_LIST_PATH, IGNORE_LABEL, INPUT_SIZE,\
                 LEARNING_RATE, NUM_CLASSES, NUM_STEPS, RANDOM_SEED, RESTORE_FROM, SAVE_NUM_IMAGES,\
-                SAVE_PRED_EVERY, SNAPSHOT_DIR, MEAN_PIXEL
+                SAVE_PRED_EVERY, SNAPSHOT_DIR, MEAN_PIXEL, MOMENTUM
 
 IMG_MEAN = np.array(MEAN_PIXEL, dtype=np.float32)
 
